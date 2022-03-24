@@ -1,0 +1,17 @@
+.wordle-nav {
+  height: 80px;
+  width: 100%;
+}
+
+.wordle-container {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow-y: hidden;
+}
+
+.wordle {
+  background-color: #333;
+  color: white;
+  height: 100%;
+}

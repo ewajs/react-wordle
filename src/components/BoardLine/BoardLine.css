@@ -1,0 +1,4 @@
+.wordle .board .line {
+  display: flex;
+  justify-content: center;
+}
