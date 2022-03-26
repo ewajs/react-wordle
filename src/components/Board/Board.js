@@ -11,7 +11,6 @@ export default function Board({
   attempts,
 }) {
   const makePastLine = (i) => {
-    //console.log("PastLine", { currentWord, targetWord, attempts });
     return (
       <BoardLine
         length={length}
@@ -23,12 +22,10 @@ export default function Board({
   };
 
   const makeCurrentLine = (i) => {
-    //console.log("CurrentLine", { currentWord, targetWord });
     return <BoardLine length={length} key={i} word={currentWord} />;
   };
 
   const makeEmptyLine = (i) => {
-    //console.log("EmptyLine");
     return <BoardLine length={length} key={i} />;
   };
 

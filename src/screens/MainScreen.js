@@ -23,7 +23,6 @@ export default function MainScreen() {
   const [attempts, setAttempts] = useState([]);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  console.log(targetWord);
   // UI
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -45,7 +44,6 @@ export default function MainScreen() {
   };
 
   const evaluateSubmission = () => {
-    //console.log({ currentWord, targetWord, attempts, maxAttempts });
     if (currentWord === targetWord) {
       setModalMessage("You won!!!");
       setShowModal(true);
