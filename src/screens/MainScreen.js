@@ -21,6 +21,7 @@ export default function MainScreen() {
   const [currentWord, setCurrentWord] = useState("");
   const [currentAttempt, setCurrentAttempt] = useState(0);
   const [attempts, setAttempts] = useState([]);
+  const [matchedLetters, setMatchedLetters] = useState({});
   const [isPlaying, setIsPlaying] = useState(true);
 
   // UI
@@ -54,6 +55,25 @@ export default function MainScreen() {
         setAttempts((a) => [...a, currentWord]);
         setCurrentAttempt((cA) => cA + 1);
         setCurrentWord("");
+        // Compute matches and partials for the keyboard
+        const newMatches = { ...matchedLetters };
+        for (let i = 0; i < targetWord.length; i++) {
+          if (targetWord.includes(currentWord[i])) {
+            // Match
+            if (targetWord[i] === currentWord[i]) {
+              // Exact
+              newMatches[currentWord[i]] = "match";
+            } else if (!newMatches.hasOwnProperty(currentWord[i])) {
+              // Partial
+              newMatches[currentWord[i]] = "partial-match";
+            }
+          } else {
+            // No Match
+            newMatches[currentWord[i]] = "no-match";
+          }
+        }
+        console.log(newMatches);
+        setMatchedLetters(newMatches);
       } else {
         setModalMessage(`${currentWord.toUpperCase()} is not a valid word!`);
         setShowModal(true);
@@ -84,7 +104,10 @@ export default function MainScreen() {
               attempts={attempts}
             />
             {isPlaying ? (
-              <KeyBoard onKeyPress={onKeyPress} />
+              <KeyBoard
+                onKeyPress={onKeyPress}
+                matchedLetters={matchedLetters}
+              />
             ) : (
               <Row>
                 <Col style={{ textAlign: "center", marginTop: "20px" }}>

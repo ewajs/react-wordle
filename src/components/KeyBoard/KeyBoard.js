@@ -2,7 +2,7 @@ import "./KeyBoard.css";
 import useKeys from "../../hooks/useKeys";
 import Key from "../Key/Key";
 
-export default function KeyBoard({ onKeyPress }) {
+export default function KeyBoard({ onKeyPress, matchedLetters }) {
   const keys = useKeys();
 
   const makeKeyRow = (keyRow, i) => {
@@ -14,6 +14,11 @@ export default function KeyBoard({ onKeyPress }) {
             keyName={key.keyName}
             key={key.keyCode}
             onKeyPress={onKeyPress}
+            matched={
+              matchedLetters.hasOwnProperty(key.keyName.toLowerCase())
+                ? matchedLetters[key.keyName.toLowerCase()]
+                : ""
+            }
           />
         ))}
       </div>

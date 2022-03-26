@@ -10,3 +10,15 @@
   justify-content: center;
   align-items: center;
 }
+
+.keyboard > .key-row > .key.partial-match {
+  background-color: #d6cc3c;
+}
+
+.keyboard > .key-row > .key.match {
+  background-color: #4bb33b;
+}
+
+.keyboard > .key-row > .key.no-match {
+  background-color: #3a3a3c;
+}
